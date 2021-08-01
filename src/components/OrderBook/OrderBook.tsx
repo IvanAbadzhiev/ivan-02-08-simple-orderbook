@@ -1,6 +1,7 @@
 import Table from "../Table/Table";
 import Button from "../Button/Button";
 import DropDown from "../DropDown/DropDown";
+import { OrderType } from "../../types/Enums";
 import classes from "./OrderBook.module.css";
 
 interface Props {
@@ -47,6 +48,7 @@ const OrderBook  : React.FC<Props> = ({
 					<Table
 						rows={orders.bids}
 						columns={columns}
+						type={OrderType.BID}
 					/>
 				</div>
 
@@ -54,6 +56,7 @@ const OrderBook  : React.FC<Props> = ({
 					<Table
 						rows={orders.asks}
 						columns={columns}
+						type={OrderType.ASK}
 					/>
 				</div>
 			</div>
