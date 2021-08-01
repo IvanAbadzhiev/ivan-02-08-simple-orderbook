@@ -43,7 +43,7 @@ const Table : React.FC<Props> = ({
 		[groupedOrdersByPrice],
 	);
 
-	const valueColor = type === OrderType.ASK ? OrderColor.GREEN : OrderColor.RED;
+	const valueColor = type === OrderType.ASK ? OrderColor.RED : OrderColor.GREEN;
 	
 	return (
 		<div className={classes.tableContainer}>
