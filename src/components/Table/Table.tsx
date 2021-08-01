@@ -11,11 +11,12 @@ interface Columns {
 interface Props {
 	rows: any[];
 	columns: Columns;
-	type: String;
+	type: string;
+	group: string;
 }
 
 const Table : React.FC<Props> = ({
-	rows, columns, type
+	rows, columns, type, group
 }) => {
 	const [orders, setOrders] = useState<OrdersByPriceType>({});
 	const columnKeys = Object.keys(columns);
@@ -27,7 +28,6 @@ const Table : React.FC<Props> = ({
 		
 	}, [rows, setOrders]);
 
-	const group = "0.5";
 	const defaultGroup = "0.5";
 
 	const groupedOrdersByPrice = useMemo(() => {
@@ -35,7 +35,7 @@ const Table : React.FC<Props> = ({
 			return orders;
 		}
 
-		return getOrdersByGroup(orders, group);
+		return getOrdersByGroup(orders, +group);
 	  }, [orders, group, defaultGroup]);
 
 	const ordersArr: SingleOrderType[] = useMemo(

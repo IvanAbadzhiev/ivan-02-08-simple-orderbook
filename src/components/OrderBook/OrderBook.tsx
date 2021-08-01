@@ -1,20 +1,28 @@
+import { useState } from "react";
 import Table from "../Table/Table";
 import Button from "../Button/Button";
 import DropDown from "../DropDown/DropDown";
-import { OrderType } from "../../types/Enums";
+import { OrderType, Product } from "../../types/Enums";
 import classes from "./OrderBook.module.css";
+
 
 interface Props {
 	onKillFeed: () => void,
 	onToggleFeed: () => void,
+	isSocketOpened: boolean,
+	marketId: Product.PI_ETHUSD | Product.PI_XBTUSD,
 	orders: any
-}
+};
 
 const OrderBook  : React.FC<Props> = ({
 	onKillFeed,
 	onToggleFeed,
-	orders
+	orders,
+	isSocketOpened,
+	marketId
 }) => {
+	const [group, setGroup] = useState("0.5");
+
 	const columns = {
 		total: {
 			title: "Total"
@@ -27,11 +35,15 @@ const OrderBook  : React.FC<Props> = ({
 		}
 	};
 
+	const onChooseGroup = (value: string) => {
+		setGroup(value);
+	}
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.orderBookHeader}>
-				<div>Order Book</div>
-				<div className={classes.spreadHeader}>Spread: 17.0 (0.05%)</div>
+				<div>Order Book {marketId}</div>
+				<div className={classes.spreadHeader}>Spread: 17.0 ({group}%)</div>
 				<div>
 					<DropDown
 						options={[
@@ -39,6 +51,7 @@ const OrderBook  : React.FC<Props> = ({
 							{ label: "0.5", value: "0.5" },
 							{ label: "1", value: "1" },
 						]}
+						onSelect={onChooseGroup}
 					/>
 				</div>
 			</div>
@@ -49,6 +62,7 @@ const OrderBook  : React.FC<Props> = ({
 						rows={orders.bids}
 						columns={columns}
 						type={OrderType.BID}
+						group={group}
 					/>
 				</div>
 
@@ -57,6 +71,7 @@ const OrderBook  : React.FC<Props> = ({
 						rows={orders.asks}
 						columns={columns}
 						type={OrderType.ASK}
+						group={group}
 					/>
 				</div>
 			</div>
@@ -64,7 +79,7 @@ const OrderBook  : React.FC<Props> = ({
 			<div className={classes.buttonsContainer}>
 				<Button
 					onClick={onKillFeed}
-					text="Kill Feed"
+					text={isSocketOpened ? "Kill Feed" : "Start Feed"}
 					backgroundColor="#5741D9"
 				/>
 
