@@ -3,18 +3,23 @@ import classes from "./DropDown.module.css";
 
 interface Props {
 	options: { value: string; label: string; }[];
+	onSelect: (value: string) => void
 }
 
 const DropDown : React.FC<Props> = ({
-	options
+	options,
+	onSelect
 }) => {
 	const [opened, setOpened] = useState<Boolean>(false);
-	const [selectedValue, setSelectedValue] = useState<String>(options[0].value);
+	const [selectedValue, setSelectedValue] = useState<string>(options[0].value);
 
-	const chooseOption = (value : String) => {
+	const chooseOption = (value : string) => {
 		setSelectedValue(value);
 		// Hide the dropdown list
 		setOpened(false);
+
+		// Propagate to the parent component
+		onSelect(value);
 	}
 	return (
 		<div className={classes.dropdown}>
