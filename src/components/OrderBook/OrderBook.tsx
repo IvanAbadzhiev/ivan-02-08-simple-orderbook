@@ -3,6 +3,7 @@ import Table from "../Table/Table";
 import Button from "../Button/Button";
 import DropDown from "../DropDown/DropDown";
 import { OrderType, Product } from "../../types/Enums";
+import Error from "../Error/Error";
 import classes from "./OrderBook.module.css";
 
 
@@ -41,7 +42,10 @@ const OrderBook  : React.FC<Props> = ({
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.orderBookHeader}>
+			{!isSocketOpened ? <Error/> : null}
+			<div
+				className={classes.orderBookHeader}
+			>
 				<div>Order Book {marketId}</div>
 				<div className={classes.spreadHeader}>Spread: 17.0 ({group}%)</div>
 				<div>
@@ -56,7 +60,12 @@ const OrderBook  : React.FC<Props> = ({
 				</div>
 			</div>
 
-			<div className={classes.orderBookBody}>
+			<div
+				className={classes.orderBookBody}
+				style={
+					!isSocketOpened ? { opacity: "0.3" } : {}
+				}
+			>
 				<div className={classes.buyPrice}>
 					<Table
 						rows={orders.bids}

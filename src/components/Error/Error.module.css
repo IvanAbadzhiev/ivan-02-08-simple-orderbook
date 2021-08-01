@@ -1,0 +1,9 @@
+.errorContainer {
+	position: absolute;
+	z-index: 1;
+	background-color: black;
+
+	top: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+}

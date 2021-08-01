@@ -26,6 +26,15 @@ const OrderBookContainer = () => {
 		setOrders(parsedData);
 	};
 
+	webSocket.onclose = () => {
+		setIsSocketOpened(false);
+	};
+
+	// If no connection
+	webSocket.onerror = () => {
+		setIsSocketOpened(false);
+	};
+
 	const unsubscribe = () => {
 		let event;
 		if(isSocketOpened) {
