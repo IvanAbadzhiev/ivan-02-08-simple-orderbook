@@ -34,7 +34,7 @@ export const getOrdersByGroup = (orders: OrdersByPriceType, group: number) => {
 export const getOrders = (groupedOrdersByPrice: any) => {
 	return Object.keys(groupedOrdersByPrice)
 		.sort((a, b) => +(a) - +(b))
-		.splice(0, 25) // TODO: Consider this limitation
+		.splice(0, 10) // TODO: Consider this limitation
 		.reduce((orders: any, orderKey) => {
 			const { price, size } = groupedOrdersByPrice[orderKey];
 			const prevTotalSize = orders[orders.length - 1];
