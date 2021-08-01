@@ -90,6 +90,9 @@ const OrderBook  : React.FC<Props> = ({
 					onClick={onKillFeed}
 					text={isSocketOpened ? "Kill Feed" : "Start Feed"}
 					backgroundColor="#5741D9"
+					style={{
+						marginRight: 15
+					}}
 				/>
 
 				<Button

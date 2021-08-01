@@ -4,20 +4,23 @@ import classes from "./Button.module.css";
 interface Props {
 	onClick: () => void,
 	backgroundColor: string,
-	text: string
+	text: string,
+	style?: {}
 }
 
 const Button : React.FC<Props> = ({
 	onClick,
 	text,
-	backgroundColor
+	backgroundColor,
+	style
 }) => {
 	return (
 		<button
 			className={classes.button}
 			onClick={onClick}
 			style={{
-				backgroundColor
+				backgroundColor,
+				...style
 			}}
 		>
 			{text}
