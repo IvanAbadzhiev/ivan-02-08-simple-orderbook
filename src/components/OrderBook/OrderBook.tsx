@@ -31,7 +31,7 @@ const OrderBook  : React.FC<Props> = ({
 		<div className={classes.container}>
 			<div className={classes.orderBookHeader}>
 				<div>Order Book</div>
-				<div>Spread: 17.0 (0.05%)</div>
+				<div className={classes.spreadHeader}>Spread: 17.0 (0.05%)</div>
 				<div>Group 0.50%</div>
 			</div>
 
