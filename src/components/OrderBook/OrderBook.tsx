@@ -1,19 +1,18 @@
 import Table from "../Table/Table";
 import Button from "../Button/Button";
+import DropDown from "../DropDown/DropDown";
 import classes from "./OrderBook.module.css";
 
 interface Props {
 	onKillFeed: () => void,
 	onToggleFeed: () => void,
-	bids: any,
-	asks: any
+	orders: any
 }
 
 const OrderBook  : React.FC<Props> = ({
 	onKillFeed,
 	onToggleFeed,
-	bids,
-	asks
+	orders
 }) => {
 	const columns = {
 		total: {
@@ -32,16 +31,30 @@ const OrderBook  : React.FC<Props> = ({
 			<div className={classes.orderBookHeader}>
 				<div>Order Book</div>
 				<div className={classes.spreadHeader}>Spread: 17.0 (0.05%)</div>
-				<div>Group 0.50%</div>
+				<div>
+					<DropDown
+						options={[
+							{ label: "0.25", value: "0.25" },
+							{ label: "0.5", value: "0.5" },
+							{ label: "1", value: "1" },
+						]}
+					/>
+				</div>
 			</div>
 
 			<div className={classes.orderBookBody}>
 				<div className={classes.buyPrice}>
-					<Table rows={bids} columns={columns}/>
+					<Table
+						rows={orders.bids}
+						columns={columns}
+					/>
 				</div>
 
 				<div className={classes.sellPrice}>
-					<Table rows={asks} columns={columns}/>
+					<Table
+						rows={orders.asks}
+						columns={columns}
+					/>
 				</div>
 			</div>
 

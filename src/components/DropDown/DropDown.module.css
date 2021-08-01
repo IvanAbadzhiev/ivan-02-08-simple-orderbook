@@ -1,0 +1,26 @@
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdownButton {
+	background-color: #9297a0;
+	border: none;
+	padding: 5px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.dropDownList {
+	position: absolute;
+	background-color: #9297a0;
+	min-width: 77px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	cursor: pointer;
+}
+
+.option {
+	text-align: center;
+
+}
