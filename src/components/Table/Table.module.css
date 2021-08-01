@@ -1,0 +1,23 @@
+.tableContainer {
+	width: 100%;
+}
+
+.tableHeader {
+	display: flex;
+	border-bottom: 3px solid #fff;
+	text-transform: uppercase;
+	padding: 5px;
+}
+
+.tableRow {
+	display: flex;
+	padding: 5px;
+}
+
+.headerCell {
+	flex: 1;
+}
+
+.rowCell {
+	flex: 1;
+}

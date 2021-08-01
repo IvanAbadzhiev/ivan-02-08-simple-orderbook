@@ -1,0 +1,28 @@
+.container {
+	width: 900px;
+	background-color: #121723;
+	margin: 0 auto;
+	
+	margin-top: 20px;
+	padding: 20px;
+}
+
+.orderBookHeader {
+	display: flex;
+	justify-content: space-between;
+}
+
+.orderBookBody {
+	display: flex;
+	/* TODO remove this when you finish */
+	height: 600px;
+}
+
+.buyPrice, .sellPrice {
+	flex: 1;
+}
+
+.buttonsContainer {
+	display: flex;
+	justify-content: center;
+}
