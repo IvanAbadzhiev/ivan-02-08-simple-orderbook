@@ -36,7 +36,7 @@ const Table : React.FC<Props> = ({
 		}
 
 		return getOrdersByGroup(orders, +group);
-	  }, [orders, group, defaultGroup]);
+	}, [orders, group, defaultGroup]);
 
 	const ordersArr: SingleOrderType[] = useMemo(
 		() => getOrders(groupedOrdersByPrice),

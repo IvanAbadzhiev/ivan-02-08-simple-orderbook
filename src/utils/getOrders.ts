@@ -3,8 +3,8 @@ import valueWithGroup from "./valueWithGroup";
 
 export const getOrdersByGroup = (orders: OrdersByPriceType, group: number) => {
 	return Object.keys(orders).reduce(
-		(currentOrders: any, orderPrice: string) => {
-		  	const { size } = orders[orderPrice];
+		(currentOrders: OrdersByPriceType, orderPrice: string) => {
+			const { size } = orders[orderPrice];
 			const groupKeyPrice = valueWithGroup(+(orderPrice), group);
 			const groupField = currentOrders[groupKeyPrice];
 		
@@ -27,7 +27,8 @@ export const getOrdersByGroup = (orders: OrdersByPriceType, group: number) => {
 					price: groupKeyPrice
 				}
 			};
-		}
+		},
+		{}
 	);
 };
 
