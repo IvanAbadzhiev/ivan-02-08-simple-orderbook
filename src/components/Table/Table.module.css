@@ -12,6 +12,7 @@
 .tableRow {
 	display: flex;
 	padding: 5px;
+	position: relative;
 }
 
 .headerCell {
@@ -20,4 +21,11 @@
 
 .rowCell {
 	flex: 1;
+}
+
+.depth {
+	position: absolute;
+    background-color: red;
+    height: 100%;
+    opacity: 0.1;
 }
