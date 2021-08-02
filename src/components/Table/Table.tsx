@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, Fragment } from "react";
 import { getOrdersByPrice, getOrders, getOrdersByGroup } from "../../utils/getOrders";
-import { OrdersByPriceType, SingleOrderType } from "../../types/Orders";
+import { OrdersByPriceType, SingleOrderType, OrdersType } from "../../types/Orders";
 import { OrderColor, OrderType } from "../../types/Enums";
 import classes from "./Table.module.css";
 
@@ -9,9 +9,9 @@ interface Columns {
 }
 
 interface Props {
-	rows: any[];
+	rows: OrdersType;
 	columns: Columns;
-	type: string;
+	type: OrderType.ASK | OrderType.BID;
 	group: string;
 }
 
@@ -67,7 +67,11 @@ const Table : React.FC<Props> = ({
 							(+entry.total / +ordersArr[ordersArr.length - 1].total) * 100,
 						);
 						
-						const styleProperties : any = {};
+						const styleProperties : {
+							left?: number;
+							right?: number;
+							backgroundColor?: string;
+						} = {};
 	
 						if(type === OrderType.ASK) {
 							styleProperties["left"] = 0;

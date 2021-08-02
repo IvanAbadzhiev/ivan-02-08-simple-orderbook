@@ -3,6 +3,7 @@ import Table from "../Table/Table";
 import Button from "../Button/Button";
 import DropDown from "../DropDown/DropDown";
 import { OrderType, Product } from "../../types/Enums";
+import { OrdersType } from "../../types/Orders";
 import Error from "../Error/Error";
 import classes from "./OrderBook.module.css";
 
@@ -12,7 +13,7 @@ interface Props {
 	onToggleFeed: () => void,
 	isSocketOpened: boolean,
 	marketId: Product.PI_ETHUSD | Product.PI_XBTUSD,
-	orders: any
+	orders: { asks: OrdersType, bids: OrdersType }
 };
 
 const OrderBook  : React.FC<Props> = ({

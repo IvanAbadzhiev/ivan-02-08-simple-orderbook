@@ -7,7 +7,7 @@ import { Product, WebsocketEventEnum } from "../../types/Enums";
 const OrderBookContainer = () => {
 	const [isSocketOpened, setIsSocketOpened] = useState(false);
 	const [marketId, setMarketId] = useState(Product.PI_XBTUSD);
-	const [orders, setOrders] = useState([]);
+	const [orders, setOrders] = useState({ asks: [], bids: [] });
 
 	const webSocket = useMemo(() => new WebSocket(WS_URL), []);
 
