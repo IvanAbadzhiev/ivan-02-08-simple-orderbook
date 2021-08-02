@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./DropDown.module.css";
 
 interface Props {
-	options: { value: string; label: string; }[];
+	options: string[];
 	onSelect: (value: string) => void
 }
 
@@ -11,7 +11,7 @@ const DropDown : React.FC<Props> = ({
 	onSelect
 }) => {
 	const [opened, setOpened] = useState<Boolean>(false);
-	const [selectedValue, setSelectedValue] = useState<string>(options[0].value);
+	const [selectedValue, setSelectedValue] = useState<string>(options[0]);
 
 	const chooseOption = (value : string) => {
 		setSelectedValue(value);
@@ -21,6 +21,7 @@ const DropDown : React.FC<Props> = ({
 		// Propagate to the parent component
 		onSelect(value);
 	}
+
 	return (
 		<div className={classes.dropdown}>
 		
@@ -33,14 +34,14 @@ const DropDown : React.FC<Props> = ({
 			
 			{opened ? (
 				<div className={classes.dropDownList}>
-					{options.map((option) => {
+					{options.map((option: string) => {
 						return (
 							<div
 								className={classes.option}
-								key={option.value}
-								onClick={() => chooseOption(option.value)}
+								key={option}
+								onClick={() => chooseOption(option)}
 							>
-								{option.label}
+								{option}
 							</div>
 						);
 					})}

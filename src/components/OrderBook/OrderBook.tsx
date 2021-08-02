@@ -5,8 +5,8 @@ import DropDown from "../DropDown/DropDown";
 import { OrderType, Product } from "../../types/Enums";
 import { OrdersType } from "../../types/Orders";
 import Error from "../Error/Error";
+import { PRODUCT_OPTIONS } from "../../config/config";
 import classes from "./OrderBook.module.css";
-
 
 interface Props {
 	onKillFeed: () => void,
@@ -51,11 +51,7 @@ const OrderBook  : React.FC<Props> = ({
 				<div className={classes.spreadHeader}>Spread: 17.0 ({group}%)</div>
 				<div>
 					<DropDown
-						options={[
-							{ label: "0.25", value: "0.25" },
-							{ label: "0.5", value: "0.5" },
-							{ label: "1", value: "1" },
-						]}
+						options={PRODUCT_OPTIONS[marketId]}
 						onSelect={onChooseGroup}
 					/>
 				</div>
