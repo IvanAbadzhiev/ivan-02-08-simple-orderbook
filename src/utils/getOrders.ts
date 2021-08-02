@@ -1,6 +1,10 @@
 import { OrdersType, OrdersByPriceType } from "../types/Orders";
 import valueWithGroup from "./valueWithGroup";
 
+/*
+	Calculate the set with the group that is selected by 
+	the user
+*/
 export const getOrdersByGroup = (orders: OrdersByPriceType, group: number) => {
 	return Object.keys(orders).reduce(
 		(currentOrders: OrdersByPriceType, orderPrice: string) => {
@@ -32,7 +36,10 @@ export const getOrdersByGroup = (orders: OrdersByPriceType, group: number) => {
 	);
 };
 
-export const getOrders = (groupedOrdersByPrice: any) => {
+/*
+	Calculate the total value for each row
+*/
+export const getOrders = (groupedOrdersByPrice: OrdersByPriceType) => {
 	return Object.keys(groupedOrdersByPrice)
 		.sort((a, b) => +(a) - +(b))
 		.splice(0, 10) // TODO: Consider this limitation
@@ -52,6 +59,10 @@ export const getOrders = (groupedOrdersByPrice: any) => {
 	}, []);
 }
 
+/*
+	Get the initial orders from the socket and convert
+	them to object
+*/
 export const getOrdersByPrice = (
 	orders: OrdersType,
 	prevOrders: OrdersByPriceType,
