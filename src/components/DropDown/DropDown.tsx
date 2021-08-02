@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import classes from "./DropDown.module.css";
 
 interface Props {
-	options: string[];
-	onSelect: (value: string) => void
+	options: number[];
+	onSelect: (value: number) => void
 }
 
 const DropDown : React.FC<Props> = ({
@@ -11,9 +11,9 @@ const DropDown : React.FC<Props> = ({
 	onSelect
 }) => {
 	const [opened, setOpened] = useState<Boolean>(false);
-	const [selectedValue, setSelectedValue] = useState<string>(options[0]);
+	const [selectedValue, setSelectedValue] = useState<number>(options[0]);
 
-	const chooseOption = (value : string) => {
+	const chooseOption = (value : number) => {
 		setSelectedValue(value);
 		// Hide the dropdown list
 		setOpened(false);
@@ -34,7 +34,7 @@ const DropDown : React.FC<Props> = ({
 			
 			{opened ? (
 				<div className={classes.dropDownList}>
-					{options.map((option: string) => {
+					{options.map((option: number) => {
 						return (
 							<div
 								className={classes.option}

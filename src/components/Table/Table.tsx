@@ -12,7 +12,7 @@ interface Props {
 	rows: OrdersType;
 	columns: Columns;
 	type: OrderType.ASK | OrderType.BID;
-	group: string;
+	group: number;
 }
 
 const Table : React.FC<Props> = ({
@@ -28,14 +28,14 @@ const Table : React.FC<Props> = ({
 		
 	}, [rows, setOrders]);
 
-	const defaultGroup = "0.5";
+	const defaultGroup = 0.5;
 
 	const groupedOrdersByPrice = useMemo(() => {
 		if (group === defaultGroup) {
 			return orders;
 		}
 
-		return getOrdersByGroup(orders, +group);
+		return getOrdersByGroup(orders, group);
 	}, [orders, group, defaultGroup]);
 
 	const ordersArr: SingleOrderType[] = useMemo(

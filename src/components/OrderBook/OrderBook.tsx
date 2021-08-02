@@ -23,7 +23,7 @@ const OrderBook  : React.FC<Props> = ({
 	isSocketOpened,
 	marketId
 }) => {
-	const [group, setGroup] = useState("0.5");
+	const [group, setGroup] = useState(0.5);
 
 	const columns = {
 		total: {
@@ -37,7 +37,7 @@ const OrderBook  : React.FC<Props> = ({
 		}
 	};
 
-	const onChooseGroup = (value: string) => {
+	const onChooseGroup = (value: number) => {
 		setGroup(value);
 	}
 
